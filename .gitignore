@@ -1,0 +1,13 @@
+# ignore ALL .log files
+*.log
+*.lock
+.nyc_output/
+node_modules/
+temp/
+npm-debug.log
+package-lock.json
+build
+npm-debug.log
+.nyc
+.env
+# modification specale pour branche dev
