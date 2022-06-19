@@ -7,7 +7,9 @@ exports.router_projet = (function() {
 
     projetRouter.route('/').get(projetCtrl.findAll);
     projetRouter.route('/').post(projetCtrl.findAll);
+    projetRouter.route('/projet_volet').post(projetCtrl.findProjetVolet);
     projetRouter.route('/projet_equipe').post(projetCtrl.findEquipeProjet);
+    projetRouter.route('/projet_equipe_volet').post(projetCtrl.findEquipeProjetVolet);
     projetRouter.route('/findActive').post(projetCtrl.findActiviteProjet);
     projetRouter.route('/insert').get(projetCtrl.insert);
     projetRouter.route('/update').get(projetCtrl.update);

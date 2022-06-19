@@ -20,7 +20,7 @@ module.exports = {
     findBlocByProjet: function(req, res) {
         console.log("Find All Called findBlocByProjet");
         console.log(req.body);
-        var sql = `SELECT B.code_bloc, B.nom as nom_bloc, B.id_prjt, P.code_proj, P.nom as nom_projet, B.id_tech, E.nom, B.status 
+        var sql = `SELECT B.ordre, B.code_bloc, B.nom as nom_bloc, B.ancronyme, B.id_prjt, P.code_proj, P.nom as nom_projet, B.id_tech, E.nom, B.status
                     FROM bloc B
                     INNER JOIN projet P ON P.code_proj = B.id_prjt
                     INNER JOIN equipe E ON E.code_equipe = B.id_tech

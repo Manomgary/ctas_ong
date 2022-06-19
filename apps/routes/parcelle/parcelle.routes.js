@@ -10,6 +10,7 @@ exports.router_parcelle = (function() {
     parcelleRouter.route('/findAllParceBenefBloc').post(parcelleCtrl.findAllParceBenefBloc);
     parcelleRouter.route('/findParcelleAss').post(parcelleCtrl.findParcelleAss);
     parcelleRouter.route('/findParcelleBloc').post(parcelleCtrl.findParcelleBloc);
+    parcelleRouter.route('/findParcellePRBloc').post(parcelleCtrl.findParcellePRBloc);
     parcelleRouter.route('/insert').get(parcelleCtrl.insert);
     parcelleRouter.route('/update').get(parcelleCtrl.update);
     parcelleRouter.route('/delete').get(parcelleCtrl.delete);

@@ -22,7 +22,7 @@ module.exports = {
     findAssocByProjet: function(req, res) {
         console.log("Find All Called findActiviteProjet");
         console.log(req.body);
-        var sql = `SELECT ASS.numero, ASS.code_ass, ASS.nom as nom_ass, ASS.id_prjt, P.code_proj, P.nom as nom_pr, ASS.id_tech, E.code_equipe, concat(E.nom,' ',E.prenom) nom_famille, ASS.id_fkt, FKT.code_fkt, FKT.nom_fkt, C.code_com, C.nom_com, ASS.status 
+        var sql = `SELECT ASS.numero, ASS.code_ass, ASS.nom as nom_ass, ASS.id_prjt, ASS.ancronyme, P.code_proj, P.nom as nom_pr, ASS.id_tech, E.code_equipe, concat(E.nom,' ',E.prenom) nom_famille, ASS.id_fkt, FKT.code_fkt, FKT.nom_fkt, C.code_com, C.nom_com, ASS.status 
                     FROM association ASS 
                     INNER JOIN projet P ON P.code_proj = ASS.id_prjt 
                     INNER JOIN equipe E ON E.code_equipe = ASS.id_tech 

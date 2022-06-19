@@ -17,7 +17,7 @@ module.exports = {
     findAllEspece: function(req, res) {
         console.log("District All Called");
         //console.log(req);
-        var sql = `SELECT code_espece, nom_espece, id_categ FROM espece`;
+        var sql = `SELECT code_espece, nom_espece, id_categ, saisonnier, unite FROM espece`;
 
         db.query(sql, (err, rows, fields) => {
             if (err) {

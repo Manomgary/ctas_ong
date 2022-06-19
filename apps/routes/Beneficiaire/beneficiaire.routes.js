@@ -15,6 +15,9 @@ exports.router_beneficiaire = (function() {
     // fetch all beneficiaire by bloc
     beneficiaireRouter.route('/findBenefBlocByProjet').post(beneficiaireCtrl.findBenefBlocByProjet);
 
+    // fetch all beneficiare PR by projet Equipe
+    beneficiaireRouter.route('/findBenefPRBloc').post(beneficiaireCtrl.findBenefPRBloc);
+
     // add new beneficiaire
     beneficiaireRouter.route('/insert').get(beneficiaireCtrl.add);
 

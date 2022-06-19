@@ -17,6 +17,7 @@ const parcelle = require('./apps/routes/parcelle/parcelle.routes').router_parcel
 const saison = require('./apps/routes/saison/saison.routes').router_saison;
 const speculation = require('./apps/routes/cultures/speculation.routes').router_speculation;
 const culture = require('./apps/routes/cultures/culture.routes').router_culture;
+const prBloc = require('./apps/routes/animation-ve/animation-ve.routes').router_prBloc;
 
 //Router
 exports.router = (function() {
@@ -72,6 +73,10 @@ exports.router = (function() {
 
     // speculation
     apiRouter.use('/culture/', culture);
+
+    // PR
+    apiRouter.use('/prBloc/', prBloc);
+
 
     return apiRouter;
 })();

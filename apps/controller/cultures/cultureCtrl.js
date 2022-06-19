@@ -61,8 +61,8 @@ module.exports = {
     findAllImportCulturePms: function(req, res) {
         console.log("Find Import data");
         //console.log(req);
-        var sql = `SELECT CPMS.code_culture, CPMS.id_parce, CPMS.id_var, CPMS.id_saison, CPMS.annee_du, LEFT(CPMS.ddp, 10) AS ddp, CPMS.qsa, CPMS.img_fact, LEFT(CPMS.dds, 10) AS dds, CPMS.sfce, 
-                    CPMS.objectif, CPMS.sc, CPMS.ea_id_variette, CPMS.ea_autres, LEFT(CPMS.dt_creation, 10) AS dt_creation, LEFT(CPMS.dt_modification, 10) AS dt_modification, CPMS.statuts, CPMS.Etat 
+        var sql = `SELECT CPMS.code_culture, CPMS.id_parce, CPMS.id_var, CPMS.id_saison, CPMS.annee_du, LEFT(CPMS.ddp, 10) AS ddp, CPMS.qsa, CPMS.img_fact, LEFT(CPMS.dds, 10) AS dds, CPMS.sfce, CPMS.sc, CPMS.ea_id_variette, 
+                    CPMS.ea_autres, LEFT(CPMS.dt_creation, 10) AS dt_creation, LEFT(CPMS.dt_modification, 10) AS dt_modification, CPMS.statuts, CPMS.Etat 
                     FROM cultures_pms CPMS
                     INNER JOIN assoc_parce AS_PRC ON AS_PRC.code_parce = CPMS.id_parce`;
         if (!(Object.keys(req.body).length === 0 && req.body.constructor === Object)) {
@@ -87,7 +87,7 @@ module.exports = {
             code_cult = req.body.data_culture;
             if (code_cult.length > 0) {
                 code_cult.forEach((elem, ind) => {
-                    var sql = `SELECT SPMS.id, SPMS.id_culture, LEFT(SPMS.ddp, 10) AS ddp, SPMS.stc, SPMS.ec, SPMS.pb, SPMS.ex, SPMS.img_cult, SPMS.name, SPMS.controle, SPMS.etat 
+                    var sql = `SELECT SPMS.id, SPMS.id_culture, LEFT(SPMS.ddp, 10) AS ddp, SPMS.stc, SPMS.ec, SPMS.pb, SPMS.ex, SPMS.img_cult, SPMS.name, SPMS.controle, SPMS.declaration, SPMS.etat 
                              FROM suivi_pms SPMS WHERE SPMS.id_culture = "${elem.code_culture}"`;
                     db.query(sql, (err, rows, field) => {
                         if (!err) {
@@ -241,7 +241,7 @@ module.exports = {
      * 
      */
     find_mep_bloc: function(req, res) {
-        var state = `SELECT CBL.code_culture, CBL.id_parce, CBL.id_espece, CBL.id_var, CBL.id_saison, CBL.annee_du, LEFT(CBL.ddp, 10) AS ddp, CBL.qso, LEFT(CBL.dds, 10) AS dds, CBL.sfce, CBL.sc, CBL.ea_autres, CBL.ea_id_variette, CBL.dt_creation, LEFT(CBL.dt_modification, 10) AS dt_modification, CBL.status, CBL.etat, CBL.id_equipe, CBL.type 
+        var state = `SELECT CBL.code_culture, CBL.id_parce, CBL.id_espece, CBL.id_var, CBL.id_saison, CBL.annee_du, LEFT(CBL.ddp, 10) AS ddp, CBL.qso, LEFT(CBL.dt_distribution, 10) AS dt_distribution, LEFT(CBL.dds, 10) AS dds, CBL.sfce, CBL.nbre_ligne, CBL.long_ligne, CBL.usage, CBL.sc, CBL.ea_autres, CBL.ea_id_variette, CBL.dt_creation, LEFT(CBL.dt_modification, 10) AS dt_modification, CBL.status, CBL.etat, CBL.id_equipe, CBL.type 
                     FROM culture_bl CBL
                     INNER JOIN bloc_parce BPRC ON BPRC.code_parce = CBL.id_parce
                     INNER JOIN bloc BL ON BL.code_bloc = BPRC.id_bloc`;
@@ -319,7 +319,7 @@ module.exports = {
      */
     find_suivi_bloc: function(req, res) {
         console.log("***********Find mep********************");
-        var state = `SELECT SBL.code_sv, SBL.id_culture, LEFT(SBL.ddp, 10) AS ddp, SBL.stc, SBL.ql, SBL.qr, SBL.long_ligne, SBL.nbre_ligne, SBL.nbre_pied, SBL.img_cult, SBL.ex, SBL.etat 
+        var state = `SELECT SBL.code_sv, SBL.id_culture, LEFT(SBL.ddp, 10) AS ddp, SBL.stc, SBL.ql, SBL.qr, SBL.long_ligne, SBL.nbre_ligne, SBL.nbre_pied, SBL.hauteur, SBL.ec, SBL.img_cult, SBL.ex, SBL.etat 
                     FROM suivi_bl SBL
                     INNER JOIN culture_bl CBL ON CBL.code_culture = SBL.id_culture
                     INNER JOIN bloc_parce BPRC ON BPRC.code_parce = CBL.id_parce

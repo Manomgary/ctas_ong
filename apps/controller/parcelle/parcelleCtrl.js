@@ -84,6 +84,34 @@ module.exports = {
             return res.status(200).json(rows);
         });
     },
+    findParcellePRBloc: function(req, res) {
+        var sql = `SELECT CEP.code_parce, CEP.id_bloc, CEP.id_benef, CEP.ref_gps, CEP.lat, CEP.log, CEP.superficie, CEP.id_commune, CEP.id_fkt, CEP.village, CEP.anne_adheran, CEP.etat, CEP.status 
+                FROM cep_parce CEP
+                INNER JOIN beneficiaire BNF ON BNF.code_benef = CEP.id_benef
+                INNER JOIN benef_activ_pr BAPR ON BAPR.id_benef = BNF.code_benef`;
+        if (!(Object.keys(req.body).length === 0 && req.body.constructor === Object)) {
+            let code_pr = req.body.code_pr;
+            let reponse = [];
+            if (code_pr && code_pr.length > 0) {
+                code_pr.forEach((elem_code_pr, ind) => {
+                    sql_where = sql + ` WHERE CEP.etat = "valide" AND CEP.status = "active" AND BNF.statut = "active" AND BNF.etat = "valide" AND BAPR.status = "active" AND BAPR.etat = "valide" AND BAPR.code_pr = "${elem_code_pr}"`;
+                    db.query(sql_where, (err, rows, fields) => {
+                        if (err) {
+                            return res.status(500).send({ error: 'From cep_parce:::::something failed ' + err});
+                        }
+                        reponse.push(rows);
+                        console.log(":::::Import CEP Code_pr::", elem_code_pr);
+                        //console.log(":::::Import CEP Reponse::", reponse);
+                        if ((code_pr.length - 1) == ind) {
+                            console.log("::::::Call Import parcelle PR Bloc:::::", req.body)
+                            console.log(":::::Import CEP Reponse::", reponse);
+                            return res.status(200).json(reponse);
+                        }
+                    });
+                });
+            }
+        }
+    },
     insert: function(req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.status(200).send('<h1>Bienvenu sur Add new controller Projet</h1>');
