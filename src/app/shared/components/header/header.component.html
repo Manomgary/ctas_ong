@@ -1,0 +1,17 @@
+<header fxLayoutAlign="space-between center">
+    <div>LOGO</div>
+    <div fxLayout="row" fxLayoutGap="20px">
+        <a routerLink="/home">Home</a>
+        <a>
+            <p>Volet Idat</p>
+            <ul>
+                <li><a [routerLink]="['/ida/bloc']" [state] = "{data: 'bloc'}">gestion du bloc</a></li>
+                <li><a [routerLink]="['/ida/pr']" [state] = "{data: 'pr'}">gestion des payants relais</a></li>
+            </ul>
+        </a>
+        <a [routerLink]="['/rp']" [state] = "{data: 'rp'}">Reseau paysant</a>
+        <a [routerLink]="['/bi']" [state] = "{data: 'bi'}">Boutique Intrant</a>
+        <a [routerLink]="['/users']">Utilisateurs</a>
+        <a [routerLink]="['/login']">Decconexion</a>
+    </div>
+</header>

@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// table
+.table-container {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+table {
+    width: 100%;
+}
+.img-cell {
+    height:30px; 
+    border-radius: 4px;
+}
+// tr row high
+tr.hg-element-row {
+    height: 23px!important;
+}
+// tr header row
+tr.hg-header-row-1 {
+    height: 30px!important;
+}
+tr.hg-header-row-2 {
+    height: 27px!important;
+}
+tr.back-color {
+    background-color: #a1f8ea;
+}
+
+/**Expended element tables*/
+tr.detail-row {
+    height: 0!important;
+}
+tr.sv-element-row:not(.sv-expanded-row):hover {
+    background: rgb(236, 235, 132);
+}
+    
+tr.sv-element-row:not(.sv-expanded-row):active {
+    background: #e4b5ff;
+}
+    
+.sv-element-detail td {
+    border-bottom-width: 0;
+}
+    
+.sv-element-detail {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5f1e1;
+    box-shadow: inset 1px 2px 5px #87b3cc;
+    border-radius: 2px;
+}
+.sv-element-detail-vide {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fddbcc;
+    border-radius: 2px;
+}
+.sv-row-vide {
+    background-color: #faeeec;
+}
+
+// Button
+.btn-dimension {
+    height: 23px!important;
+    line-height: 23px!important;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    min-width: 34px!important;
+    line-height: 23px!important;
+    padding: 0 10px!important;
+}
+
+.btn-success {
+    color: white;
+    background-color: #19685b;
+    padding: 0px;
+}
+
+.btn-info {
+    color: white;
+    background-color: #0d3c68;
+    padding: 0px;
+}
+
+

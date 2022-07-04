@@ -1,0 +1,18 @@
+
+<mat-list role="list" *ngIf="activeRoute === 'bloc'">
+    <mat-list-item role="listitem"> <a routerLink="/ida/bloc/">Identification beneficiare</a></mat-list-item>
+    <mat-list-item role="listitem"> <a routerLink="/ida/bloc/mep">mep</a></mat-list-item>
+</mat-list>
+<ul *ngIf="activeRoute === 'pr'">
+    <li><a routerLink="/ida/pr/">Identification pr</a></li>
+    <li><a routerLink="/ida/pr/animation">animation/VE</a></li>
+    <li><a routerLink="/ida/pr/mep">mep</a></li>
+</ul>
+<ul *ngIf="activeRoute === 'rp'">
+    <li><a routerLink="/ida/pr/">Identification pms</a></li>
+    <li><a routerLink="/ida/pr/animation">carnet de suivi pms</a></li>
+    <li><a routerLink="/ida/pr/mep">mep</a></li>
+</ul>
+<ul *ngIf="activeRoute === 'bi'">
+    <p>gestion des boutiques intrant</p>
+</ul>
