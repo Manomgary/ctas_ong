@@ -11,7 +11,7 @@ module.exports = {
     },
     findAll: function(req, res) {
         console.log("Call Collaborateur");
-        var sql = `SELECT code_col, nom, description FROM collaborateur`;
+        var sql = `SELECT code_col, nom, description, ancronyme FROM collaborateur`;
         db.query(sql, (err, rows, fields) => {
             if (err) {
                 return res.status(500).send({ error: 'From Collaborateur:::::something failed ' + err});
